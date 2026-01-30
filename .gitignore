@@ -106,3 +106,6 @@ ENV/
 
 # PyCharm project settings
 .idea
+/build.zip
+/nul
+/.claude/settings.local.json
