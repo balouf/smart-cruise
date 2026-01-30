@@ -46,6 +46,7 @@ dev = [
     "nbsphinx>=0.9.7",
     "pydata-sphinx-theme>=0.16.1",
     "pytest-cov>=6.1.1",
+    "rpds-py>=0.25.0",
     "ruff>=0.11.8",
     "sphinx-copybutton>=0.5.2"
 ]
