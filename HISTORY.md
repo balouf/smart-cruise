@@ -10,7 +10,7 @@
 
 - Dropped Python 3.10 support (now requires Python 3.11+).
 - Fixed type hint in `CostModel` (`down_matrix` was `np.array` instead of `np.ndarray`).
-- Removed unused imports in `opti_cruise.py`.
+- Removed unused imports in `smart_cruise.py`.
 - Updated README with proper quickstart example.
 - Fixed documentation issues.
 

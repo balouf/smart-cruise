@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "opti-cruise"
+name = "smart-cruise"
 version = "0.1.1"
 description = "Find Pareto-optimal cruise trajectories to optimize energy consumption and travel time for any vehicle with state-dependent costs."
 readme = "README.md"
@@ -36,8 +36,8 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/balouf/opti-cruise"
-Documentation = "https://balouf.github.io/opti-cruise"
+Repository = "https://github.com/balouf/smart-cruise"
+Documentation = "https://balouf.github.io/smart-cruise"
 
 [dependency-groups]
 dev = [
@@ -58,7 +58,7 @@ skip_empty = true
 
 [tool.coverage.run]
 branch = true
-source = ["opti_cruise"]
+source = ["smart_cruise"]
 
 [tool.coverage.html]
 directory = "cov"

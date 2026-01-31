@@ -18,6 +18,6 @@ The "height" dimension represents any discrete state variable that affects energ
 (fuel mass, battery charge, etc.) which may itself affect consumption efficiency.
 
 ```{eval-rst}
-.. automodule:: opti_cruise.models
+.. automodule:: smart_cruise.models
     :members:
 ```

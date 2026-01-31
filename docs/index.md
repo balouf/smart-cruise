@@ -1,6 +1,6 @@
-# Welcome to Optimal Cruise Computation's documentation!
+# Welcome to Smart Cruise's documentation!
 
-**opti-cruise** is a Python package for finding Pareto-optimal trajectories that balance
+**smart-cruise** is a Python package for finding Pareto-optimal trajectories that balance
 energy consumption and travel time. It uses dynamic programming with multi-objective
 optimization to efficiently explore the trade-off space.
 
@@ -9,7 +9,7 @@ optimization to efficiently explore the trade-off space.
 While the default parameters are tuned for aircraft cruise optimization, the underlying
 algorithm is completely generic. It applies to any vehicle or system where:
 
-- **Cruise mode**: A steady-state operation phase exists (the "cruise" in opti-cruise)
+- **Cruise mode**: A steady-state operation phase exists (the "cruise" in smart-cruise)
 - **2D waypoint grid**: The trajectory can be discretized into distance × state (e.g., altitude, depth, elevation)
 - **State-dependent costs**: Energy consumption depends on current state and remaining energy
 

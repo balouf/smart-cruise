@@ -9,7 +9,7 @@ You can contribute in many ways:
 
 ### Report Bugs
 
-Report bugs at https://github.com/balouf/opti-cruise/issues.
+Report bugs at https://github.com/balouf/smart-cruise/issues.
 
 If you are reporting a bug, please include:
 
@@ -29,13 +29,13 @@ and "help wanted" is open to whoever wants to implement it.
 
 ### Write Documentation
 
-Optimal Cruise Computation could always use more documentation, whether as part of the
-official Optimal Cruise Computation docs, in docstrings, or even on the web in blog posts,
+Smart Cruise could always use more documentation, whether as part of the
+official Smart Cruise docs, in docstrings, or even on the web in blog posts,
 articles, and such.
 
 ### Submit Feedback
 
-The best way to send feedback is to file an issue at https://github.com/balouf/opti-cruise/issues.
+The best way to send feedback is to file an issue at https://github.com/balouf/smart-cruise/issues.
 
 If you are proposing a feature:
 
@@ -46,18 +46,18 @@ If you are proposing a feature:
 
 ## Get Started!
 
-Ready to contribute? Here's how to set up `opti-cruise` for local development.
+Ready to contribute? Here's how to set up `smart-cruise` for local development.
 
-1. Fork the `opti-cruise` repo on GitHub.
+1. Fork the `smart-cruise` repo on GitHub.
 
 2. Clone your fork locally::
     ```console
-    $ git clone git@github.com:your_name_here/opti-cruise.git
+    $ git clone git@github.com:your_name_here/smart-cruise.git
     ```
 
 3. Install your local copy into a virtualenv. Assuming you have uv installed, this is how you set up your fork for local development:
     ```console
-    $ cd opti-cruise/
+    $ cd smart-cruise/
     $ uv sync --all-extras
     ```
 

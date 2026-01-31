@@ -986,51 +986,6 @@ wheels = [
 ]
 
 [[package]]
-name = "opti-cruise"
-version = "0.1.1"
-source = { editable = "." }
-dependencies = [
-    { name = "dill" },
-    { name = "matplotlib" },
-    { name = "numba" },
-    { name = "pillow" },
-    { name = "zstandard" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "ipython" },
-    { name = "myst-parser", extra = ["linkify"] },
-    { name = "nbsphinx" },
-    { name = "pydata-sphinx-theme" },
-    { name = "pytest-cov" },
-    { name = "rpds-py" },
-    { name = "ruff" },
-    { name = "sphinx-copybutton" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "dill", specifier = ">=0.4.0" },
-    { name = "matplotlib", specifier = ">=3.10.8" },
-    { name = "numba", specifier = ">=0.63.0" },
-    { name = "pillow", specifier = ">=11.3.0" },
-    { name = "zstandard", specifier = ">=0.23.0" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "ipython", specifier = ">=8.35.0" },
-    { name = "myst-parser", extras = ["linkify"], specifier = ">=4.0.1" },
-    { name = "nbsphinx", specifier = ">=0.9.7" },
-    { name = "pydata-sphinx-theme", specifier = ">=0.16.1" },
-    { name = "pytest-cov", specifier = ">=6.1.1" },
-    { name = "rpds-py", specifier = ">=0.25.0" },
-    { name = "ruff", specifier = ">=0.11.8" },
-    { name = "sphinx-copybutton", specifier = ">=0.5.2" },
-]
-
-[[package]]
 name = "packaging"
 version = "25.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1566,6 +1521,51 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/94/e7/b2c673351809dca68a0e064b6af791aa332cf192da575fd474ed7d6f16a2/six-1.17.0.tar.gz", hash = "sha256:ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81", size = 34031, upload-time = "2024-12-04T17:35:28.174Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl", hash = "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274", size = 11050, upload-time = "2024-12-04T17:35:26.475Z" },
+]
+
+[[package]]
+name = "smart-cruise"
+version = "0.1.1"
+source = { editable = "." }
+dependencies = [
+    { name = "dill" },
+    { name = "matplotlib" },
+    { name = "numba" },
+    { name = "pillow" },
+    { name = "zstandard" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "ipython" },
+    { name = "myst-parser", extra = ["linkify"] },
+    { name = "nbsphinx" },
+    { name = "pydata-sphinx-theme" },
+    { name = "pytest-cov" },
+    { name = "rpds-py" },
+    { name = "ruff" },
+    { name = "sphinx-copybutton" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "dill", specifier = ">=0.4.0" },
+    { name = "matplotlib", specifier = ">=3.10.8" },
+    { name = "numba", specifier = ">=0.63.0" },
+    { name = "pillow", specifier = ">=11.3.0" },
+    { name = "zstandard", specifier = ">=0.23.0" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "ipython", specifier = ">=8.35.0" },
+    { name = "myst-parser", extras = ["linkify"], specifier = ">=4.0.1" },
+    { name = "nbsphinx", specifier = ">=0.9.7" },
+    { name = "pydata-sphinx-theme", specifier = ">=0.16.1" },
+    { name = "pytest-cov", specifier = ">=6.1.1" },
+    { name = "rpds-py", specifier = ">=0.25.0" },
+    { name = "ruff", specifier = ">=0.11.8" },
+    { name = "sphinx-copybutton", specifier = ">=0.5.2" },
 ]
 
 [[package]]

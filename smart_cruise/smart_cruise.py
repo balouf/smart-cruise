@@ -3,7 +3,7 @@ from dataclasses import dataclass
 import numpy as np
 from matplotlib import pyplot as plt
 
-from opti_cruise.jit import compute
+from smart_cruise.jit import compute
 
 #: Default weight budget.
 W0 = 26000.0
@@ -141,7 +141,7 @@ class Cruise:
     Examples
     --------
 
-    >>> from opti_cruise import CostRandom
+    >>> from smart_cruise import CostRandom
     >>> model = CostRandom(n_d=100, seed=42)
     >>> cruise = Cruise(model)
     >>> cruise.parameters.pareto_max = 5

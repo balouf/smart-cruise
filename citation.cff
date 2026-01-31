@@ -1,6 +1,6 @@
 
 cff-version: 1.2.0
-title: Optimal Cruise Computation
+title: Smart Cruise
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
@@ -9,7 +9,7 @@ authors:
   - family-names: Mathieu
     given-names: Fabien
     email: fabien.mathieu@normalesup.org
-repository-code: "https://github.com/balouf/opti-cruise/"
-url: "https://balouf.github.io/opti-cruise/"
+repository-code: "https://github.com/balouf/smart-cruise/"
+url: "https://balouf.github.io/smart-cruise/"
 abstract: Try to infer best cruise trajectory to optimize fuel consumption and travel time.
 license: MIT

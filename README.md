@@ -1,18 +1,18 @@
-# Optimal Cruise Computation
+# Smart Cruise
 
 
-[![PyPI Status](https://img.shields.io/pypi/v/opti-cruise.svg)](https://pypi.python.org/pypi/opti-cruise)
-[![Build Status](https://github.com/balouf/opti-cruise/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/balouf/opti-cruise/actions?query=workflow%3Abuild)
-[![Documentation Status](https://github.com/balouf/opti-cruise/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/balouf/opti-cruise/actions?query=workflow%3Adocs)
+[![PyPI Status](https://img.shields.io/pypi/v/smart-cruise.svg)](https://pypi.python.org/pypi/smart-cruise)
+[![Build Status](https://github.com/balouf/smart-cruise/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/balouf/smart-cruise/actions?query=workflow%3Abuild)
+[![Documentation Status](https://github.com/balouf/smart-cruise/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/balouf/smart-cruise/actions?query=workflow%3Adocs)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Code Coverage](https://codecov.io/gh/balouf/opti-cruise/branch/main/graphs/badge.svg)](https://codecov.io/gh/balouf/opti-cruise/tree/main)
+[![Code Coverage](https://codecov.io/gh/balouf/smart-cruise/branch/main/graphs/badge.svg)](https://codecov.io/gh/balouf/smart-cruise/tree/main)
 
 Find Pareto-optimal cruise trajectories to optimize energy consumption and travel time.
 
 
 - Free software: MIT
-- Documentation: <https://balouf.github.io/opti-cruise/>.
-- Github: <https://github.com/balouf/opti-cruise>
+- Documentation: <https://balouf.github.io/smart-cruise/>.
+- Github: <https://github.com/balouf/smart-cruise>
 
 
 ## Features
@@ -38,7 +38,7 @@ for aircraft cruise optimization, the underlying model applies to any vehicle wh
 3. **Time-independent costs**: Transition costs between states don't vary with absolute
    time (no weather changes, traffic patterns, etc. in the model)
 
-The name "opti-cruise" refers to optimizing any steady-state operation mode ("cruise"),
+The name "smart-cruise" refers to optimizing any steady-state operation mode ("cruise"),
 not just aircraft flight.
 
 ### Example Applications
@@ -63,16 +63,16 @@ The model draws on established principles from various domains:
 
 ## Quickstart
 
-Install Optimal Cruise Computation:
+Install Smart Cruise:
 
 ```console
-$ pip install opti-cruise
+$ pip install smart-cruise
 ```
 
-Use Optimal Cruise Computation in a Python project:
+Use Smart Cruise in a Python project:
 
 ```pycon
->>> from opti_cruise import CostRandom, Cruise
+>>> from smart_cruise import CostRandom, Cruise
 >>> model = CostRandom(n_d=100, seed=42)
 >>> cruise = Cruise(model)
 >>> cruise.parameters.pareto_max = 5
