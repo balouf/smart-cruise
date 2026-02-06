@@ -76,8 +76,8 @@ source_suffix = [".rst", ".md"]
 master_doc = "index"
 
 # General information about the project.
-project = "OC"
-copyright = "2025, Fabien Mathieu"
+project = "Smart Cruise"
+copyright = "2026, Fabien Mathieu"
 author = "Fabien Mathieu"
 
 # The version info for the project you're documenting, acts as replacement

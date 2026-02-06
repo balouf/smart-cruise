@@ -133,9 +133,9 @@ class Cruise:
 
     Parameters
     ----------
-    model: :class:`~opti_cruise.models.CostModel`
+    model: :class:`~smart_cruise.models.CostModel`
         The cost model.
-    parameters: :class:`~opti_cruise.opti_cruise.CruiseParameters`
+    parameters: :class:`~smart_cruise.smart_cruise.CruiseParameters`
         Simulation parameters.
 
     Examples

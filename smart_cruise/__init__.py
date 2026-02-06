@@ -1,4 +1,4 @@
-"""Top-level package for Optimal Cruise Computation."""
+"""Top-level package for Smart Cruise."""
 
 from importlib.metadata import metadata
 from smart_cruise.models import CostModel as CostModel

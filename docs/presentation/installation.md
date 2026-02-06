@@ -42,7 +42,7 @@ Once you have a copy of the source, you can install it from the package director
 $ pip install .
 ```
 
-[github repo]: https://github.com/balouf/opti-cruise
+[github repo]: https://github.com/balouf/smart-cruise
 [pip]: https://pip.pypa.io
 [python installation guide]: http://docs.python-guide.org/en/latest/starting/installation/
-[tarball]: https://github.com/balouf/opti-cruise/tarball/main
+[tarball]: https://github.com/balouf/smart-cruise/tarball/main

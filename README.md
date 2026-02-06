@@ -23,33 +23,44 @@ Find Pareto-optimal cruise trajectories to optimize energy consumption and trave
 - Customizable cost models for different scenarios.
 - Trajectory visualization tools.
 
+## Theoretical Foundations
+
+This package implements the multi-objective dynamic programming framework described in:
+
+> **Bui-Xuan, Mathieu, Tighilt** (2026). *La croisière s'amuse*. _submitted to_ Algotel 2026.
+
+Main model assumptions:
+- **Dominance preservation (H1)**: Any resource advantage at step d can be maintained through transitions
+- **Lipschitz continuity (H2)**: Small perturbations lead to bounded output changes
+
+**Complexity**: O(n² log n) for 2 objectives with constant precision, vs. exponential for exact Pareto front
+
+The `pareto_max` parameter (denoted S in the paper) controls the trade-off between computation time and approximation quality.
+
+
 ## Model Applicability
 
-This package implements a **state-dependent energy optimization** model using dynamic
+This package implements a **state-dependent multi-objective optimization** model using dynamic
 programming to find Pareto-optimal trajectories. While the default parameters are tuned
-for aircraft cruise optimization, the underlying model applies to any vehicle where:
+for ship / aircraft cruise optimization, the underlying model applies to any vehicle where:
 
-1. **Cruise mode exists**: A steady-state operation phase that can be discretized into
-   2D waypoints (e.g., distance vs. altitude, or any x-y grid)
+1. **Cruise mode exists**: A fixed trajectory is studied, which can be split in segments.
+2. A set of values (e.g. time, energy) must be optimized.
+3. The rest of the state description (e.g., height, speed, ...) has finite values.
+4. H1 and H2 apply.
 
-2. **State-dependent consumption**: Energy consumption depends on the vehicle's
-   current state (position, speed, remaining energy)
-
-3. **Time-independent costs**: Transition costs between states don't vary with absolute
-   time (no weather changes, traffic patterns, etc. in the model)
-
-The name "smart-cruise" refers to optimizing any steady-state operation mode ("cruise"),
-not just aircraft flight.
+The name _Smart Cruise_ refers to optimizing any steady-state operation mode ("cruise") and is not restricted to,
+for instance, just aircraft flights.
 
 ### Example Applications
 
-| Domain | "Height" dimension | "Energy" dimension | State dependency |
-|--------|-------------------|-------------------|------------------|
+| Domain | "Height" dimension    | "Energy" dimension | State dependency |
+|--------|-----------------------|-------------------|------------------|
 | Aircraft | Flight level/altitude | Fuel remaining | Lighter aircraft = more efficient |
-| UAV | Altitude | Battery charge | Altitude affects efficiency |
-| AUV | Depth | Battery charge | Depth affects drag/buoyancy |
-| Ground vehicle | Terrain elevation | Fuel/battery | Elevation changes cost energy |
-| Ship | - | Fuel remaining | Weight affects hull resistance |
+| UAV | Altitude              | Battery charge | Altitude affects efficiency |
+| AUV | Depth                 | Battery charge | Depth affects drag/buoyancy |
+| Ground vehicle | Terrain elevation     | Fuel/battery | Elevation changes cost energy |
+| Ship | Sails                 | Fuel remaining | Weight affects hull resistance |
 
 ### Scientific References
 

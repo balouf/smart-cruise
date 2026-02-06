@@ -123,10 +123,17 @@ def compute(
     Parameters
     ----------
     start: :class:`list`
+        Initial (weight, time) budgets.
     timings: :class:`~numpy.ndarray`
+        Time cost per speed level.
     speed_array: :class:`~numpy.ndarray`
+        Speed cost adjustments.
     cruise_matrix: :class:`~numpy.ndarray`
+        Base energy cost matrix (waypoint x height).
     climb_matrix: :class:`~numpy.ndarray`
+        Energy cost for climbing one height level.
+    down_matrix: :class:`~numpy.ndarray`
+        Energy gain for descending one height level.
     height_gain: :class:`float`
     weight_cost: :class:`float`
     backoff: :class:`int`

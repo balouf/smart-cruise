@@ -3,7 +3,7 @@ from dataclasses import dataclass, asdict
 
 #: Default number of heights
 N_H = 8
-#: Default number of waypoints
+#: Default number of segments
 N_D = 600
 #: Default number of speeds
 N_S = 7
@@ -11,7 +11,7 @@ N_S = 7
 S_MIN = 0.6
 #: Default max speed (in *mach*)
 S_MAX = 0.9
-#: Default waypoint length (in *km*)
+#: Default segment length (in *km*)
 WAYPOINT = 10.0
 #: Default Mach speed (in *km/s*)
 MAC = 0.3403
