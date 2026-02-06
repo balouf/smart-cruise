@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="#2563eb"/>
+
+  <!-- Drone body (center) -->
+  <rect x="26" y="26" width="12" height="12" rx="2" fill="#ffffff"/>
+
+  <!-- Arms -->
+  <line x1="32" y1="26" x2="32" y2="12" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <line x1="32" y1="38" x2="32" y2="52" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <line x1="26" y1="32" x2="12" y2="32" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <line x1="38" y1="32" x2="52" y2="32" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Rotors (propellers) -->
+  <circle cx="32" cy="12" r="7" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="32" cy="52" r="7" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="12" cy="32" r="7" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="52" cy="32" r="7" fill="none" stroke="#ffffff" stroke-width="2"/>
+
+  <!-- Rotor centers -->
+  <circle cx="32" cy="12" r="2" fill="#ffffff"/>
+  <circle cx="32" cy="52" r="2" fill="#ffffff"/>
+  <circle cx="12" cy="32" r="2" fill="#ffffff"/>
+  <circle cx="52" cy="32" r="2" fill="#ffffff"/>
+
+  <!-- Direction indicator (front) -->
+  <circle cx="32" cy="12" r="3" fill="#10b981"/>
+</svg>
