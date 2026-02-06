@@ -6,7 +6,7 @@
 - Standardize cost function
 - Sanitize cost function
 
-## 0.1.1 (2026-01-30): Maintenance release
+## 0.1.1 (2026-02-06): First public release
 
 - Dropped Python 3.10 support (now requires Python 3.11+).
 - Fixed type hint in `CostModel` (`down_matrix` was `np.array` instead of `np.ndarray`).
