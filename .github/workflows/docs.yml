@@ -35,6 +35,7 @@ jobs:
         run: |
           uv sync --all-extras
           uv run sphinx-build -a -E -b html docs build
+          touch build/.nojekyll
 
       - name: Deploy Sphinx documentation on Github Pages
         uses: JamesIves/github-pages-deploy-action@v4
