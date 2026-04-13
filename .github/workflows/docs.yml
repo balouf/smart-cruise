@@ -1,20 +1,40 @@
-# This workflow will generate the docs on each push,
-# and publish them on GitHub Pages if the branch is the main one.
-# To avoid size explosion, only the current version of pages is kept.
+# This workflow builds the Sphinx documentation on pushes to main and on
+# pull requests (for validation), and deploys to GitHub Pages on main
+# using the official actions/upload-pages-artifact + actions/deploy-pages
+# flow (no gh-pages branch).
+#
+# NOTE: after this workflow is merged, the GitHub Pages "Source" setting
+# for this repo must be switched from "Deploy from a branch" to
+# "GitHub Actions" in Settings -> Pages.
 
 name: docs
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# Needed by actions/deploy-pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the
+# run in-progress and the latest queued.
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
 
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -24,7 +44,7 @@ jobs:
       - name: Set up uv
         uses: astral-sh/setup-uv@v5
         with:
-          version: "0.9.30"
+          version: "0.11.6"
 
       - name: Setup Pandoc
         uses: pandoc/actions/setup@v1
@@ -37,11 +57,20 @@ jobs:
           uv run sphinx-build -a -E -b html docs build
           touch build/.nojekyll
 
-      - name: Deploy Sphinx documentation on Github Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        if: github.ref == 'refs/heads/main'
+      - name: Upload Pages artifact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-          folder: build/
-          single-commit: true
+          path: build/
+
+  deploy:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
