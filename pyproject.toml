@@ -63,6 +63,11 @@ dev = [
 
 [tool.coverage.report]
 skip_empty = true
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "if __name__ == '__main__':",
+]
 
 [tool.coverage.run]
 branch = true
@@ -72,4 +77,10 @@ source = ["smart_cruise"]
 directory = "cov"
 
 [tool.pytest.ini_options]
-addopts = "--doctest-modules --cov --cov-config=pyproject.toml --cov-report xml --cov-report html --showlocals --capture=no --exitfirst --failed-first"
+addopts = "--doctest-modules --cov --cov-config=pyproject.toml --cov-report xml --cov-report html --showlocals --capture=no"
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]

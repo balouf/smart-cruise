@@ -1,5 +1,6 @@
+from dataclasses import asdict, dataclass
+
 import numpy as np
-from dataclasses import dataclass, asdict
 
 #: Default number of heights
 N_H = 8

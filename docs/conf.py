@@ -55,11 +55,9 @@ myst_links_external_new_tab = True
 # Add the possibility to access python documentation.
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
-    "sklearn": ("https://scikit-learn.org/stable", None),
     "ipython": ("https://ipython.readthedocs.io/en/stable/", None),
     "numba": ("https://numba.readthedocs.io/en/stable/", None),
     "numpy": ("https://numpy.org/doc/stable/", None),
-    "scipy": ("https://docs.scipy.org/doc/scipy/", None),
     "matplotlib": ("https://matplotlib.org/stable/", None),
 }
 
@@ -138,10 +136,10 @@ html_theme_options = {
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ["_static"]
 
 # Favicon (drone icon)
-html_favicon = '_static/favicon.svg'
+html_favicon = "_static/favicon.svg"
 
 
 # -- Options for HTMLHelp output ---------------------------------------
@@ -185,9 +183,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    (master_doc, "smart_cruise", "Smart Cruise Documentation", [author], 1)
-]
+man_pages = [(master_doc, "smart_cruise", "Smart Cruise Documentation", [author], 1)]
 
 
 # -- Options for Texinfo output ----------------------------------------

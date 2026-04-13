@@ -1,7 +1,7 @@
 import numpy as np
 from numba import njit
-from numba.typed import List
 from numba.core import config as numba_config
+from numba.typed import List
 
 
 @njit
@@ -61,7 +61,7 @@ if numba_config.DISABLE_JIT:
     nb_rec = np_rec
 else:
     # JIT mode: use Numba types
-    from numba import typeof, from_dtype
+    from numba import from_dtype, typeof
 
     wt_type = typeof((1.0, 2.0))
     state_type = typeof((1, 2, 3, 4.0, 5.0, 6))
@@ -98,9 +98,7 @@ def pareto_collapse(states, pareto_max):
 
         # Sample if needed
         if len(res) > pareto_max:
-            res = List(
-                [res[round(y)] for y in np.linspace(0, len(res) - 1, pareto_max)]
-            )
+            res = List([res[round(y)] for y in np.linspace(0, len(res) - 1, pareto_max)])
         states[state] = res
 
 

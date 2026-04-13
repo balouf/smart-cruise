@@ -99,3 +99,8 @@ To run a subset of tests:
 ```bash
 $ uv run pytest tests/
 ```
+
+For a fast local edit-test loop (fail fast, retry previously-failed first):
+```bash
+$ uv run pytest -x --ff
+```

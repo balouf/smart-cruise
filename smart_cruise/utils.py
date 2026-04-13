@@ -1,10 +1,11 @@
-import dill as pickle
-import zstandard as zstd
 import errno
 import os
+from contextlib import contextmanager
 from pathlib import Path
 from tempfile import NamedTemporaryFile
-from contextlib import contextmanager
+
+import dill as pickle
+import zstandard as zstd
 
 
 @contextmanager
@@ -35,9 +36,7 @@ class MixInIO:
     Provide basic save/load capacities to other classes.
     """
 
-    def dump(
-        self, filename: str, path=".", overwrite=False, compress=True, stemize=True
-    ):
+    def dump(self, filename: str, path=".", overwrite=False, compress=True, stemize=True):
         """
         Save instance to file.
 
@@ -102,9 +101,7 @@ class MixInIO:
         if compress:
             destination = path / (fn.name + ".pkl.zst")
             if destination.exists() and not overwrite:
-                print(
-                    f"File {destination} already exists! Use overwrite option to overwrite."
-                )
+                print(f"File {destination} already exists! Use overwrite option to overwrite.")
             else:
                 with safe_write(destination) as f:
                     cctx = zstd.ZstdCompressor(level=3)
@@ -113,9 +110,7 @@ class MixInIO:
         else:
             destination = path / (fn.name + ".pkl")
             if destination.exists() and not overwrite:
-                print(
-                    f"File {destination} already exists! Use overwrite option to overwrite."
-                )
+                print(f"File {destination} already exists! Use overwrite option to overwrite.")
             else:
                 with safe_write(destination) as f:
                     pickle.dump(self, f)
