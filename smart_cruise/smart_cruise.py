@@ -53,10 +53,11 @@ class Trajectories:
         w: :class:`~numpy.ndarray`
         t: :class:`~numpy.ndarray`
         """
-        h = np.array([t[0] for t in self.trajs[i, :]]) / self.n_h
-        s = np.array([t[1] for t in self.trajs[i, :]]) / self.n_s
-        w = np.array([t[2] for t in self.trajs[i, :]]) / self.trajs[0, 0][2]
-        t = np.array([t[3] for t in self.trajs[i, :]]) / self.trajs[0, 0][3]
+        row = self.trajs[i, :]
+        h = np.array([state[0] for state in row]) / self.n_h
+        s = np.array([state[1] for state in row]) / self.n_s
+        w = np.array([state[2] for state in row]) / self.trajs[0, 0][2]
+        t = np.array([state[3] for state in row]) / self.trajs[0, 0][3]
         return h, s, w, t
 
     def plot_traj(self, i):
@@ -91,8 +92,9 @@ class Trajectories:
         w: :class:`~numpy.ndarray`
         t: :class:`~numpy.ndarray`
         """
-        w = np.array([t[2] for t in self.trajs[:, -1]], dtype=float)
-        t = np.array([t[3] for t in self.trajs[:, -1]], dtype=float)
+        last = self.trajs[:, -1]
+        w = np.array([state[2] for state in last], dtype=float)
+        t = np.array([state[3] for state in last], dtype=float)
         return w, t
 
     def plot_front(self):
