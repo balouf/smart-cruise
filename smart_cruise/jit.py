@@ -108,7 +108,7 @@ def compute(
     timings,
     speed_array,
     cruise_matrix,
-    climb_matrix,
+    up_matrix,
     down_matrix,
     height_gain,
     weight_cost,
@@ -127,31 +127,31 @@ def compute(
     speed_array: :class:`~numpy.ndarray`
         Speed cost adjustments.
     cruise_matrix: :class:`~numpy.ndarray`
-        Base energy cost matrix (waypoint x height).
-    climb_matrix: :class:`~numpy.ndarray`
-        Energy cost for climbing one height level.
+        Base energy cost matrix (track point x height).
+    up_matrix: :class:`~numpy.ndarray`
+        Energy cost for moving upward by one height level.
     down_matrix: :class:`~numpy.ndarray`
-        Energy gain for descending one height level.
+        Energy gain for moving downward by one height level.
     height_gain: :class:`float`
     weight_cost: :class:`float`
     backoff: :class:`int`
     pareto_max: :class:`int`
     """
-    waypoint = np.empty(len(start), dtype=state_type)
+    track_point = np.empty(len(start), dtype=state_type)
     for i, wt in enumerate(start):
-        waypoint[i] = (0, 0, 0, *wt, 0)
-    waypoints = [waypoint]
+        track_point[i] = (0, 0, 0, *wt, 0)
+    track_points = [track_point]
     n_d, n_h = cruise_matrix.shape
     n_s = len(speed_array)
-    # One waypoint after the other
+    # One track point after the other
     for i in range(n_d):
         # new state dict
         states = new_state_dict()
-        # Browse states of current waypoint and processes their successors
-        for p, state in enumerate(waypoints[i]):
+        # Browse states of current track point and processes their successors
+        for p, state in enumerate(track_points[i]):
             h, s, b, w, t, _ = state
             base_cost = cruise_matrix[i, h] - h * height_gain + w * weight_cost
-            c = climb_matrix[i, h]
+            c = up_matrix[i, h]
             d = down_matrix[i, h]
             bb = max(0, b - 1)
             ww = w - max(0.0, base_cost + speed_array[s])
@@ -173,16 +173,16 @@ def compute(
                             insert_state(states, h - 1, ss, backoff, ww + d, tt, p)
         pareto_collapse(states, pareto_max=pareto_max)
         n_states = sum([len(v) for v in states.values()])
-        waypoint = np.empty(n_states, dtype=state_type)
+        track_point = np.empty(n_states, dtype=state_type)
         index = 0
         for k, vv in states.items():
             for v in vv:
-                waypoint[index] = (*k, *v)
+                track_point[index] = (*k, *v)
                 index += 1
-        waypoints.append(waypoint)
+        track_points.append(track_point)
 
-    # Global Pareto-reduction of last waypoint
-    last = waypoints[-1]
+    # Global Pareto-reduction of last track point
+    last = track_points[-1]
     if len(last) == 0:
         return None
     keys = np.empty(len(last), dtype=wt_type)
@@ -207,7 +207,7 @@ def compute(
         trajectories[i, -1]["t"] = end[4]
         pos = end[5]
         for j in range(n_d - 1, -1, -1):
-            state = waypoints[j][pos]
+            state = track_points[j][pos]
             trajectories[i, j]["h"] = state[0]
             trajectories[i, j]["s"] = state[1]
             trajectories[i, j]["w"] = state[3]
