@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "smart-cruise"
-version = "0.1.1"
+version = "0.2.0"
 description = "Find Pareto-optimal cruise trajectories to optimize energy consumption and travel time for any vehicle with state-dependent costs."
 readme = "README.md"
 requires-python = ">=3.11"

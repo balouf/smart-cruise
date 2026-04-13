@@ -1,12 +1,11 @@
+import warnings
 from dataclasses import asdict, dataclass
 
 import numpy as np
-import warnings
-from dataclasses import dataclass, asdict
 
 #: Default number of heights
 N_H = 8
-#: Default number of track-point
+#: Default number of track points
 N_D = 600
 #: Default number of speeds
 N_S = 7
@@ -87,6 +86,7 @@ class CostModel:
             stacklevel=2,
         )
         return self.up_matrix
+
 
 class CostRandom(CostModel):
     """
