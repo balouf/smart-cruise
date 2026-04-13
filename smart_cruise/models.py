@@ -1,28 +1,36 @@
 from dataclasses import asdict, dataclass
 
 import numpy as np
+import warnings
+from dataclasses import dataclass, asdict
 
 #: Default number of heights
 N_H = 8
-#: Default number of segments
+#: Default number of track-point
 N_D = 600
 #: Default number of speeds
 N_S = 7
-#: Default min speed (in *mach*)
+#: Default min speed ratio (relative to the reference speed unit)
 S_MIN = 0.6
-#: Default max speed (in *mach*)
+#: Default max speed ratio (relative to the reference speed unit)
 S_MAX = 0.9
-#: Default segment length (in *km*)
+#: Default track-point length (in *km*)
 TRACK_POINT = 10.0
-#: Default reference speed (in *km/s*)
-SPEED = 0.3403
+#: Deprecated alias for :data:`TRACK_POINT`.
+WAYPOINT = TRACK_POINT
+#: Default reference speed unit (Mach 1 for aircraft, in *km/s*)
+UNIT_SPEED = 0.3403
+#: Deprecated alias for :data:`UNIT_SPEED`.
+MAC = UNIT_SPEED
 #: Default speed cost (additional speed cost is :math:`S * s^2`)
 SPEED_COST = 50.0
 #: Default base cost
 CRUISE_COST = 20.0
-#: Default maneuver cost
-MANEUVER_COST = 100.0
-#: Default climbing (down) gain
+#: Default upward maneuver cost
+UP_COST = 100.0
+#: Deprecated alias for :data:`UP_COST`.
+CLIMB_COST = UP_COST
+#: Default downward maneuver gain
 DOWN_GAIN = 25.0
 #: Default cost reduction due to height
 HEIGHT_GAIN = 3.0
@@ -49,7 +57,7 @@ class CostModel:
         Energy cost to travel the track point w.r.t. speed index.
     cruise_matrix: :class:`~numpy.ndarray`
         Base cost w.r.t. track point and height indices.
-    maneuver_matrix: :class:`~numpy.ndarray`
+    up_matrix: :class:`~numpy.ndarray`
         Cost to increase height w.r.t. track point and height indices.
     down_matrix: :class:`~numpy.ndarray`
         Gain from decreasing height w.r.t. track point and height indices.
@@ -62,7 +70,7 @@ class CostModel:
     timings: np.ndarray
     speed_array: np.ndarray
     cruise_matrix: np.ndarray
-    maneuver_matrix: np.ndarray
+    up_matrix: np.ndarray
     down_matrix: np.ndarray
     height_gain: float
     weight_cost: float
@@ -71,6 +79,14 @@ class CostModel:
     def dict(self):
         return asdict(self)
 
+    @property
+    def climb_matrix(self):
+        warnings.warn(
+            "`climb_matrix` is deprecated; use `up_matrix`.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        return self.up_matrix
 
 class CostRandom(CostModel):
     """
@@ -88,18 +104,18 @@ class CostRandom(CostModel):
     n_s: :class:`int`, optional
         Number of speed levels.
     s_min: :class:`float`, optional
-        Minimum speed (default: Mach 0.6 for aircraft).
+        Minimum speed ratio relative to the reference speed unit.
     s_max: :class:`float`, optional
-        Maximum speed (default: Mach 0.9 for aircraft).
+        Maximum speed ratio relative to the reference speed unit.
     track_point: :class:`float`, optional
         Track point length (in km).
-    speed: :class:`float`, optional
-        Reference speed (default: Mach 1 in km/s for aircraft).
+    unit_speed: :class:`float`, optional
+        Reference speed unit (Mach 1 in km/s for aircraft).
     speed_cost: :class:`float`, optional
         Energy cost coefficient for speed.
     cruise_cost: :class:`float`, optional
         Base energy cost per track point.
-    maneuver_cost: :class:`float`, optional
+    up_cost: :class:`float`, optional
         Energy cost for increasing height/state.
     down_gain: :class:`float`, optional
         Energy recovered when decreasing height/state.
@@ -107,6 +123,12 @@ class CostRandom(CostModel):
         Efficiency improvement from higher states.
     inverse_weight: :class:`float`, optional
         Energy level at which cost increases by 1 unit.
+    waypoint: :class:`float`, optional
+        Deprecated alias for ``track_point``.
+    mac: :class:`float`, optional
+        Deprecated alias for ``unit_speed``.
+    climb_cost: :class:`float`, optional
+        Deprecated alias for ``up_cost``.
     seed: :class:`int`, optional
         Random seed for reproducible terrain generation.
     """
@@ -119,28 +141,53 @@ class CostRandom(CostModel):
         s_min=S_MIN,
         s_max=S_MAX,
         track_point=TRACK_POINT,
-        speed=SPEED,
+        unit_speed=UNIT_SPEED,
         speed_cost=SPEED_COST,
         cruise_cost=CRUISE_COST,
-        maneuver_cost=MANEUVER_COST,
+        up_cost=UP_COST,
         down_gain=DOWN_GAIN,
         height_gain=HEIGHT_GAIN,
         inverse_weight=INVERSE_WEIGHT,
         seed=None,
+        *,
+        waypoint=None,
+        mac=None,
+        climb_cost=None,
     ):
+        if waypoint is not None:
+            warnings.warn(
+                "`waypoint` is deprecated; use `track_point`.",
+                DeprecationWarning,
+                stacklevel=2,
+            )
+            track_point = waypoint
+        if mac is not None:
+            warnings.warn(
+                "`mac` is deprecated; use `unit_speed`.",
+                DeprecationWarning,
+                stacklevel=2,
+            )
+            unit_speed = mac
+        if climb_cost is not None:
+            warnings.warn(
+                "`climb_cost` is deprecated; use `up_cost`.",
+                DeprecationWarning,
+                stacklevel=2,
+            )
+            up_cost = climb_cost
         if seed is not None:
             np.random.seed(seed)
         speeds = np.linspace(s_min, s_max, n_s)
-        timings = track_point / speed / speeds
+        timings = track_point / unit_speed / speeds
         speed_array = speed_cost * speeds**2
         cruise_matrix = cruise_cost * (0.5 + np.random.rand(n_d, n_h))
-        maneuver_matrix = maneuver_cost * (0.5 + np.random.rand(n_d, n_h))
+        up_matrix = up_cost * (0.5 + np.random.rand(n_d, n_h))
         down_matrix = down_gain * (0.5 + np.random.rand(n_d, n_h))
         super().__init__(
             timings=timings,
             speed_array=speed_array,
             cruise_matrix=cruise_matrix,
-            maneuver_matrix=maneuver_matrix,
+            up_matrix=up_matrix,
             down_matrix=down_matrix,
             height_gain=height_gain,
             weight_cost=1 / inverse_weight,

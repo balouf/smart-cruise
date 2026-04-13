@@ -108,7 +108,7 @@ def compute(
     timings,
     speed_array,
     cruise_matrix,
-    maneuver_matrix,
+    up_matrix,
     down_matrix,
     height_gain,
     weight_cost,
@@ -128,10 +128,10 @@ def compute(
         Speed cost adjustments.
     cruise_matrix: :class:`~numpy.ndarray`
         Base energy cost matrix (track point x height).
-    maneuver_matrix: :class:`~numpy.ndarray`
-        Energy cost for climbing one height level.
+    up_matrix: :class:`~numpy.ndarray`
+        Energy cost for moving upward by one height level.
     down_matrix: :class:`~numpy.ndarray`
-        Energy gain for descending one height level.
+        Energy gain for moving downward by one height level.
     height_gain: :class:`float`
     weight_cost: :class:`float`
     backoff: :class:`int`
@@ -151,7 +151,7 @@ def compute(
         for p, state in enumerate(track_points[i]):
             h, s, b, w, t, _ = state
             base_cost = cruise_matrix[i, h] - h * height_gain + w * weight_cost
-            c = maneuver_matrix[i, h]
+            c = up_matrix[i, h]
             d = down_matrix[i, h]
             bb = max(0, b - 1)
             ww = w - max(0.0, base_cost + speed_array[s])

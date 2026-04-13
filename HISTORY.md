@@ -25,6 +25,30 @@
 - `tests/__init__.py`: fixed stale `opti-cruise` docstring leftover from the rebranding.
 - `Trajectories.get_traj` / `get_front`: renamed shadowed `t` loop variable to `state` for readability. No behavior change.
 
+## Unreleased
+
+### Breaking changes
+
+- The canonical cost-model API has been renamed from ``waypoint``/``mac``/``climb_matrix`` to
+  ``track_point``/``unit_speed``/``up_matrix``. This is a
+  breaking change for downstream users targeting the new canonical names directly, and should ship
+  in a minor-version bump (``0.1.x`` -> ``0.2.0``).
+- A transition shim is kept for one release through deprecated aliases for
+  ``WAYPOINT``/``TRACK_POINT``, ``MAC``/``UNIT_SPEED``, ``CLIMB_COST``/``UP_COST``,
+  ``CostRandom(..., waypoint/mac/climb_cost)`` and ``CostModel.climb_matrix``.
+- Dataclass serialization no longer exposes deprecated keys. ``asdict(model)`` and ``model.dict``
+  only contain declared dataclass fields such as ``up_matrix`` and ``down_matrix``; deprecated
+  compatibility properties like ``climb_matrix`` are not included and
+  ``asdict(model)[\"climb_matrix\"]`` now raises ``KeyError``.
+
+### Changed
+
+- Adopted the generic canonical names ``track_point``, ``unit_speed`` and ``up_matrix`` while
+  keeping the ``0.1.1`` public API available through ``DeprecationWarning``.
+- Kept ``seed`` as a positional-or-keyword argument in ``CostRandom.__init__``; only deprecated
+  compatibility aliases remain keyword-only.
+- Updated model and JIT docstrings to use the new terminology consistently.
+
 ## 0.1.1 (2026-02-06): First public release
 
 - Dropped Python 3.10 support (now requires Python 3.11+).
