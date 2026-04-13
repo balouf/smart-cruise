@@ -27,7 +27,7 @@ Find Pareto-optimal cruise trajectories to optimize energy consumption and trave
 
 This package implements the multi-objective dynamic programming framework described in:
 
-> **Bui-Xuan, Mathieu, Tighilt** (2026). *La croisière s'amuse*. _submitted to_ Algotel 2026.
+> **Bui-Xuan, Mathieu, Tighilt** (2026). *La croisière s'amuse*. Algotel 2026.
 
 Main model assumptions:
 - **Dominance preservation (H1)**: Any resource advantage at step d can be maintained through transitions
@@ -49,10 +49,15 @@ for ship / aircraft cruise optimization, the underlying model applies to any veh
 3. The rest of the state description (e.g., height, speed, ...) has finite values.
 4. H1 and H2 apply.
 
-The name _Smart Cruise_ refers to optimizing any steady-state operation mode ("cruise") and is not restricted to,
-for instance, just aircraft flights.
+The name _Smart Cruise_ refers to optimizing any steady-state operation mode ("cruise"). The underlying model has a large range of applications, drawing on various scientific domains:
 
-### Example Applications
+- **Aircraft**: The [Breguet range equation](https://web.mit.edu/16.unified/www/FALL/thermodynamics/notes/node98.html) captures state-dependent fuel consumption
+- **UAV optimization**: [Fuel-weight trajectory optimization](https://pmc.ncbi.nlm.nih.gov/articles/PMC10819899/) demonstrates 25% fuel reduction through weight tracking
+- **Multi-rotor UAV**: [Energy-aware path planning](https://www.nature.com/articles/s41598-025-99001-z) shows power varies with flight state
+- **Fuel cell vehicles**: [Multi-dimensional DP](https://www.mdpi.com/1996-1073/15/14/5190) for global energy optimization
+- **AUV trajectory**: [Energy-optimal MPC](https://arxiv.org/pdf/1906.08719) for underwater vehicle path planning
+
+<!-- ### Example Applications
 
 | Domain | "Height" dimension    | "Energy" dimension | State dependency |
 |--------|-----------------------|-------------------|------------------|
@@ -71,6 +76,7 @@ The model draws on established principles from various domains:
 - **Multi-rotor UAV**: [Energy-aware path planning](https://www.nature.com/articles/s41598-025-99001-z) shows power varies with flight state
 - **Fuel cell vehicles**: [Multi-dimensional DP](https://www.mdpi.com/1996-1073/15/14/5190) for global energy optimization
 - **AUV trajectory**: [Energy-optimal MPC](https://arxiv.org/pdf/1906.08719) for underwater vehicle path planning
+-->
 
 ## Quickstart
 

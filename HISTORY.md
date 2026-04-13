@@ -17,6 +17,7 @@
 - **CI**: bumped `astral-sh/setup-uv` pin from `0.9.30` to `0.11.6` across all three workflows. Migrated the docs workflow away from a `gh-pages` branch to `actions/upload-pages-artifact` + `actions/deploy-pages`; docs now build on pushes to `main` and on PRs only (no more builds on every feature branch). *Action required after release*: flip repo Settings → Pages → Source to "GitHub Actions".
 - **Docs**: removed unused `sklearn`/`scipy` intersphinx mappings from `docs/conf.py`.
 - **Citation**: updated `citation.cff` abstract to match the generalized (non-fuel-specific) description in `README.md`.
+- **README**: paper citation updated (accepted at Algotel 2026, dropped "submitted to"); merged the naming motivation with the scientific references into a single narrative under "Model Applicability"; the former "Example Applications" table and duplicate references block are kept as HTML comments for potential later restoration.
 - **`.gitignore`**: added `cov/` to match the coverage HTML output directory.
 
 ### Fixes
