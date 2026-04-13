@@ -1531,7 +1531,6 @@ dependencies = [
     { name = "dill" },
     { name = "matplotlib" },
     { name = "numba" },
-    { name = "pillow" },
     { name = "zstandard" },
 ]
 
@@ -1542,7 +1541,6 @@ dev = [
     { name = "nbsphinx" },
     { name = "pydata-sphinx-theme" },
     { name = "pytest-cov" },
-    { name = "rpds-py" },
     { name = "ruff" },
     { name = "sphinx-copybutton" },
 ]
@@ -1552,18 +1550,16 @@ requires-dist = [
     { name = "dill", specifier = ">=0.4.0" },
     { name = "matplotlib", specifier = ">=3.10.8" },
     { name = "numba", specifier = ">=0.63.0" },
-    { name = "pillow", specifier = ">=11.3.0" },
     { name = "zstandard", specifier = ">=0.23.0" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "ipython", specifier = ">=8.35.0" },
+    { name = "ipython", specifier = ">=9.0" },
     { name = "myst-parser", extras = ["linkify"], specifier = ">=4.0.1" },
     { name = "nbsphinx", specifier = ">=0.9.7" },
     { name = "pydata-sphinx-theme", specifier = ">=0.16.1" },
     { name = "pytest-cov", specifier = ">=6.1.1" },
-    { name = "rpds-py", specifier = ">=0.25.0" },
     { name = "ruff", specifier = ">=0.11.8" },
     { name = "sphinx-copybutton", specifier = ">=0.5.2" },
 ]
