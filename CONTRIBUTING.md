@@ -61,26 +61,31 @@ Ready to contribute? Here's how to set up `smart-cruise` for local development.
     $ uv sync --all-extras
     ```
 
-4. Create a branch for local development::
+4. (Optional but recommended) install the pre-commit hooks so ruff runs automatically on each commit:
+    ```console
+    $ uv tool run pre-commit install
+    ```
+
+5. Create a branch for local development::
     ```console
     $ git checkout -b name-of-your-bugfix-or-feature
     ```
     Now you can make your changes locally.
 
-5. When you're done making changes, check that your changes pass the
+6. When you're done making changes, check that your changes pass the
    tests:
     ```console
     $ uv run pytest
     ```
 
-6. Commit your changes and push your branch to GitHub::
+7. Commit your changes and push your branch to GitHub::
     ```bash
     $ git add .
     $ git commit -m "Your detailed description of your changes."
     $ git push origin name-of-your-bugfix-or-feature
     ```
 
-7. Submit a pull request through the GitHub website.
+8. Submit a pull request through the GitHub website.
 
 ## Pull Request Guidelines
 
