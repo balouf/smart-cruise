@@ -11,5 +11,5 @@ authors:
     email: fabien.mathieu@normalesup.org
 repository-code: "https://github.com/balouf/smart-cruise/"
 url: "https://balouf.github.io/smart-cruise/"
-abstract: Try to infer best cruise trajectory to optimize fuel consumption and travel time.
+abstract: Find Pareto-optimal cruise trajectories to optimize energy consumption and travel time for any vehicle with state-dependent costs.
 license: MIT

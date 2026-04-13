@@ -1,1 +1,1 @@
-"""Unit test package for opti-cruise."""
+"""Unit test package for smart-cruise."""

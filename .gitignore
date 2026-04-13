@@ -37,6 +37,7 @@ pip-delete-this-directory.txt
 
 # Unit test / coverage reports
 htmlcov/
+cov/
 .tox/
 .coverage
 .coverage.*
@@ -110,3 +111,6 @@ ENV/
 /build.zip
 /nul
 /.claude/settings.local.json
+
+# Typst outputs
+*.typ
