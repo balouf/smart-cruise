@@ -6,6 +6,7 @@
 [![Documentation Status](https://github.com/balouf/smart-cruise/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/balouf/smart-cruise/actions?query=workflow%3Adocs)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code Coverage](https://codecov.io/gh/balouf/smart-cruise/branch/main/graphs/badge.svg)](https://codecov.io/gh/balouf/smart-cruise/tree/main)
+[![SWH](https://archive.softwareheritage.org/badge/origin/https://github.com/balouf/smart-cruise/)](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/balouf/smart-cruise)
 
 Find Pareto-optimal cruise trajectories to optimize energy consumption and travel time.
 
